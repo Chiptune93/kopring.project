@@ -1,7 +1,7 @@
 import kopring.project.repo.primary.PrimaryRepository
 import kopring.project.repo.secondary.SecondaryRepository
-import kopring.service.config.PrimaryDatabaseConfig
-import kopring.service.config.SecondaryDatabaseConfig
+import kopring.project.config.PrimaryDatabaseConfig
+import kopring.project.config.SecondaryDatabaseConfig
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired

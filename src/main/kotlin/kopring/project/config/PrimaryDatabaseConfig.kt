@@ -1,4 +1,4 @@
-package kopring.service.config
+package kopring.project.config
 
 import com.zaxxer.hikari.HikariDataSource
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
@@ -22,7 +22,7 @@ import java.util.*
 // 기본 데이터 소스를 히카리를 사용해서 @Primary를 통해 올려도 이를 기본 데이터 소스로 인식하지 않는 듯 하다.
 // 아마. 자동으로 올리는 기능으로 인하여 새로 데이터 소스가 생성되어 설정 값이 존재하지 않아 그러는 듯 하다.
 @EnableJpaRepositories( // Jpa Repository 스캔 및 엔티티/트랜잭션 매니저를 지정하기 위한 설정이다.
-    basePackages = ["kopring.service.repo.primary"],
+    basePackages = ["kopring.project.repo.primary"],
     entityManagerFactoryRef = "primaryEntityManagerFactory",
     transactionManagerRef = "primaryTransactionManager"
 )
@@ -60,7 +60,7 @@ class PrimaryDatabaseConfig(private val env: Environment) {
         // 데이터 소스 사용 지정
         em.dataSource = firstDataSource(firstDataSourceProperties())
         // 해당 엔티티 매니저가 관리할 패키지 지정
-        em.setPackagesToScan(*arrayOf("kopring.service.entity.primary"))
+        em.setPackagesToScan(*arrayOf("kopring.project.entity.primary"))
 
         // JPA Adapter 지정
         val vendorAdapter = HibernateJpaVendorAdapter()

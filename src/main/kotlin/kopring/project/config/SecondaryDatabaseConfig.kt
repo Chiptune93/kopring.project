@@ -1,4 +1,4 @@
-package kopring.service.config
+package kopring.project.config
 
 import com.zaxxer.hikari.HikariDataSource
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
@@ -19,7 +19,7 @@ import java.util.*
 @Configuration
 @EnableAutoConfiguration(exclude = [DataSourceAutoConfiguration::class])
 @EnableJpaRepositories(
-    basePackages = ["kopring.service.repo.secondary"],
+    basePackages = ["kopring.project.repo.secondary"],
     entityManagerFactoryRef = "secondaryEntityManagerFactory",
     transactionManagerRef = "secondaryTransactionManager"
 )
@@ -52,7 +52,7 @@ class SecondaryDatabaseConfig(private val env: Environment) {
     fun secondaryEntityManagerFactory(): LocalContainerEntityManagerFactoryBean {
         val em = LocalContainerEntityManagerFactoryBean()
         em.dataSource = secondDataSource(secondDataSourceProperties())
-        em.setPackagesToScan(*arrayOf("kopring.service.entity.secondary"))
+        em.setPackagesToScan(*arrayOf("kopring.project.entity.secondary"))
 
         val vendorAdapter = HibernateJpaVendorAdapter()
         vendorAdapter.setShowSql(true)

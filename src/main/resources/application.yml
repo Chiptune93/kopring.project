@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    # example mysql database
+    first:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://{host}:{port}/{databaseName}
+      username: { id }
+      password: { password }
+      configuration:
+        maximum-pool-size: 30
+      # jpa config
+      jpa:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQLDialect
+          format_sql: true
+          ddl-auto: none
+          show_sql: true
+    # example postgres database
+    second:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://{host}:{port}/{databaseName}
+      username: { id }
+      password: { password }
+      # jpa config
+      jpa:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+          format_sql: true
+          ddl-auto: none
+          show_sql: true
+          # ?? ???? ??? ? ???? ??.
+          default_schema: movies
+          physical_naming_strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+
+
+# logging
+#logging:
+#  level:
+#    root: DEBUG
+#  org:
+#    springframework: DEBUG
+#  console:
+#    enabled: true
+

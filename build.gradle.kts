@@ -14,6 +14,12 @@ java {
     sourceCompatibility = JavaVersion.VERSION_17
 }
 
+configurations {
+    compileOnly {
+        extendsFrom(configurations.annotationProcessor.get())
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -22,6 +28,23 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    // devtools
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+    // jakson
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    // lombok
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+
+    // jpa
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+    // database driver what you required
+    implementation("org.postgresql:postgresql")
+    implementation("com.mysql:mysql-connector-j")
 }
 
 tasks.withType<KotlinCompile> {
